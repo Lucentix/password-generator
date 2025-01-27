@@ -20,7 +20,9 @@ const App = () => {
 
     let generatedPassword = "";
     for (let i = 0; i < passwordLength; i++) {
-      const randomIndex = Math.floor(Math.random() * charset.length);
+      const randomValues = new Uint32Array(1);
+      window.crypto.getRandomValues(randomValues);
+      const randomIndex = randomValues[0] % charset.length;
       generatedPassword += charset[randomIndex];
     }
 
